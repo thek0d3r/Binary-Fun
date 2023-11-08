@@ -57,7 +57,7 @@ void print_banner() {
     printf("                                             /$$  | $$                                 \n");
     printf("                                            |  $$$$$$/                                  \n");
     printf("                                             \\______/                                   \n");
-    printf("                                                            author: thek0der\n");
+    printf("                                                        author: Horja Razvan\n");
     printf("\n----------------------------------------------------------------------------------------\n\n");
 }
 

@@ -71,9 +71,8 @@ int main() {
         switch (opt)
         {
         case 0: 
-            gameOn = 0;
             printf("Jocul a fost abandonat!\n");
-            break;
+            exit(0);
 
         case 1: {
             printf("\nIntroduceti indexul randului pe care vreti sa il completati (0, %d): ", th-1);
@@ -113,6 +112,9 @@ int main() {
             break;
         }
     } while(gameOn);
+
+    clear_screen();
+    print_screen(guess, nums, th);
 
     elapsed_time = difftime(end_time, start_time);
 
