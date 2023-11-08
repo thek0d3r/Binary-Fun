@@ -72,7 +72,7 @@ int check_binarity(int **guess, int th) {
     return 1;
 }
 
-int check_ans(int **guess, int **board, int th, int rand) {
+int check_row(int **guess, int **board, int th, int rand) {
     for(int j = 0; j < th; j++)
         if(guess[rand][j] != board[rand][j]) return 0;
 

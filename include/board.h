@@ -9,6 +9,6 @@ void gen_random_seed();
 void gen_board(int **board, int *nums, int th);
 int gen_num(int th);
 int check_binarity(int **guess, int th);
-int check_ans(int **guess, int **board, int th, int rand);
+int check_row(int **guess, int **board, int th, int rand);
 
 #endif // BOARD_H
