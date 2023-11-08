@@ -118,7 +118,7 @@ int main() {
 
     elapsed_time = difftime(end_time, start_time);
 
-    printf("Jocul s-a terminat in %.2f secunde!", elapsed_time);
+    printf("Jocul s-a terminat in %.2f secunde!\n", elapsed_time);
 
     free(board);
     free(nums);
