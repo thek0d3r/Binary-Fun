@@ -3,13 +3,12 @@
 
 #include <time.h>
 
+void print_screen(int **board, int *nums, int th);
+void print_banner();
 void gen_random_seed();
+void gen_board(int **board, int *nums, int th);
 int gen_num(int th);
-int* gen_board(int* board, int th);
-int validate_guess(char* guess);
-int check_guess(int num, int guess);
-
-extern int th;
-extern int* board;
+int check_binarity(int **guess, int th);
+int check_ans(int **guess, int **board, int th, int rand);
 
 #endif // BOARD_H

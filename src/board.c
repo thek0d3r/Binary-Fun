@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <stdio.h>
 #include <math.h>
 #include <time.h>
 #include <string.h>
@@ -15,19 +16,65 @@ int gen_num(int th) {
     return rand() % (int)pow(2, th);
 }
 
-int* gen_board(int* board, int th) {
-    for(int i = 0; i < th; i++)
-        board[i] = gen_num(th);
+void gen_board(int **board, int *nums, int th) {
+    for(int i = 0; i < th; i++) {
+        for(int j = 0; j < th; j++) {
+            int num = gen_num(th);
 
-    return board;
+            nums[i] = num;
+
+            for(int k = th-1; k >= 0; k--) {
+                board[i][j] = ((num>>k) & 1);
+                j++;
+            }
+
+            j--;
+        }
+    }
 }
 
-int validate_guess(char* guess) {
+void print_screen(int **board, int *nums, int th) {
+    print_banner();
 
-    if(strlen(guess) > 8 || strspn(guess, "01") == 0) return 0;
+    for(int i = 0; i < th; i++) {
+        printf("%4d  ", nums[i]);
+        for(int j = 0; j < th; j++)
+            printf("%d ", board[i][j]);
+        printf("\n");
+    }
+}
+
+void print_banner() {
+    printf("\n");
+    printf(" /$$$$$$$  /$$                                               /$$$$$$$$                 \n");
+    printf("| $$__  $$|__/                                              | $$_____/                 \n");
+    printf("| $$  \\ $$ /$$ /$$$$$$$   /$$$$$$   /$$$$$$  /$$   /$$      | $$    /$$   /$$ /$$$$$$$ \n");
+    printf("| $$$$$$$ | $$| $$__  $$ |____  $$ /$$__  $$| $$  | $$      | $$$$$| $$  | $$| $$__  $$\n");
+    printf("| $$__  $$| $$| $$  \\ $$  /$$$$$$$| $$  \\__/| $$  | $$      | $$__/| $$  | $$| $$  \\ $$\n");
+    printf("| $$  \\ $$| $$| $$  \\ $$ /$$__  $$| $$      | $$  | $$      | $$   | $$  | $$| $$  | $$\n");
+    printf("| $$$$$$$/| $$| $$  \\ $$|  $$$$$$$| $$      |  $$$$$$$      | $$   |  $$$$$$/| $$  | $$\n");
+    printf("|_______/ |__/|__/  |__/ \\_______/|__/       \\____  $$      |__/    \\______/ |__/  |__/\n");
+    printf("                                             /$$  | $$                                 \n");
+    printf("                                            |  $$$$$$/                                  \n");
+    printf("                                             \\______/                                   \n");
+    printf("                                                            author: thek0der\n");
+    printf("\n----------------------------------------------------------------------------------------\n\n");
+}
+
+int check_binarity(int **guess, int th) {
+    for(int i = 0; i < th; i++) 
+        for(int j = 0; j < th; j++)
+            if(guess[i][j] != 0 && guess[i][j] != 1) {
+                guess[i][j] = 0;
+                return 0;
+            }
+
     return 1;
 }
 
-int check_guess(int num, int guess) {
-    return (guess ^ num);
+int check_ans(int **guess, int **board, int th, int rand) {
+    for(int j = 0; j < th; j++)
+        if(guess[rand][j] != board[rand][j]) return 0;
+
+    return 1;
 }
