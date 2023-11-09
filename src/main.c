@@ -122,6 +122,7 @@ int main() {
         
         default:
             printf("Optiunea este invalida!");
+            sleep(3);
             clear_screen();
             break;
         }
