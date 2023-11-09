@@ -14,6 +14,7 @@ void print_banner() {
     printf("                                            |  $$$$$$/                                  \n");
     printf("                                             \\______/                                   \n");
     printf("                                                        author: Horja Razvan\n");
+    printf("\nrepo: https://github.com/thek0d3r/Binary-Fun.git\n");
     printf("\n----------------------------------------------------------------------------------------\n\n");
 }
 
