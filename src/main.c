@@ -86,7 +86,7 @@ int main() {
                 break;
             }
 
-            if(check_row(guess, board, th, row) || nums[row] == 0) {
+            if(check_row(guess, board, th, row)) {
                 printf("Randul este deja completat corect!\n");
                 break;
             }
