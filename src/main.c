@@ -1,8 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <unistd.h>
 
 #include "board.h"
+#include "screen.h"
 
 void clear_screen() {
     #ifdef _WIN32
@@ -88,6 +90,7 @@ int main() {
 
             if(check_row(guess, board, th, row)) {
                 printf("Randul este deja completat corect!\n");
+                sleep(3);
                 break;
             }
 
@@ -99,11 +102,14 @@ int main() {
 
             if(!check_binarity(guess, th)) {
                 printf("\nNu ati introdus o reprezentare in binar pentru randul %d!\n", row);
+                sleep(3);
                 break;
             }
             
             if(!check_row(guess, board, th, row)) {
                 printf("Valoarea introdusa este incorecta!\n");
+                sleep(3);
+                break;
             } else correctRows++;
             
             if(correctRows == th) {
@@ -126,7 +132,7 @@ int main() {
 
     elapsed_time = difftime(end_time, start_time);
 
-    printf("Jocul s-a terminat in %.2f secunde!\n", elapsed_time);
+    printf("\nJocul s-a terminat in %.2f secunde!\n", elapsed_time);
 
     free(board);
     free(nums);

@@ -3,8 +3,6 @@
 
 #include <time.h>
 
-void print_screen(int **board, int *nums, int th);
-void print_banner();
 void gen_random_seed();
 void gen_board(int **board, int *nums, int th);
 int gen_num(int th);
