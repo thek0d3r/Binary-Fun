@@ -13,7 +13,7 @@ void gen_random_seed() {
 }
 
 int gen_num(int th) {
-    return rand() % (int)pow(2, th);
+    return 1 + rand() % ((int)pow(2, th) - 1);
 }
 
 void gen_board(int **board, int *nums, int th) {
@@ -22,6 +22,12 @@ void gen_board(int **board, int *nums, int th) {
             int num = gen_num(th);
 
             nums[i] = num;
+
+            for(int k = i - 1; k >= 0; k--)
+                if(nums[k] == num) {
+                    while(nums[k] == num) num = gen_num(th);
+                    nums[k] = num;
+                }
 
             for(int k = th-1; k >= 0; k--) {
                 board[i][j] = ((num>>k) & 1);
