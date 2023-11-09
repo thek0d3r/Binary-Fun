@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "board.h": "c",
+        "screen.h": "c"
+    }
+}

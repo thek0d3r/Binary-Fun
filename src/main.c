@@ -60,9 +60,6 @@ int main() {
 
     time(&start_time);
 
-    for(int i = 0; i < th; i++)
-        if(*(nums+i) == 0) correctRows++;
-
     do {
         clear_screen();
         print_screen(guess, nums, th);
@@ -123,7 +120,6 @@ int main() {
         default:
             printf("Optiunea este invalida!");
             sleep(3);
-            clear_screen();
             break;
         }
     } while(gameOn);
