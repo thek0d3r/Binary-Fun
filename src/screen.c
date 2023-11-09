@@ -22,9 +22,9 @@ void print_screen(int **board, int *nums, int th) {
     print_banner();
 
     for(int i = 0; i < th; i++) {
-        printf("%4d  ", nums[i]);
+        printf("%4d  ", *(nums+i));
         for(int j = 0; j < th; j++)
-            printf("%d ", board[i][j]);
+            printf("%d ", *(*(board+i)+j));
         printf("\n");
     }
 }

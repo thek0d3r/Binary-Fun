@@ -20,17 +20,17 @@ void gen_board(int **board, int *nums, int th) {
     for(int i = 0; i < th; i++) {
         int num = gen_num(th);
 
-        nums[i] = num;
+        *(nums+i) = num;
 
         for(int k = i - 1; k >= 0; k--) {
-            if(nums[k] == num) {
-                while(nums[k] == num) num = gen_num(th);
-                nums[k] = num;
+            if(*(nums+k) == num) {
+                while(*(nums+k) == num) num = gen_num(th);
+                *(nums+k) = num;
             }
         }
 
         for(int j = th-1; j >= 0; j--) {
-            board[i][j] = ((num >> (th - j - 1)) & 1);
+            *(*(board+i)+j) = ((num >> (th - j - 1)) & 1);
         }
 
     }
@@ -41,8 +41,8 @@ void gen_board(int **board, int *nums, int th) {
 int check_binarity(int **guess, int th) {
     for(int i = 0; i < th; i++) 
         for(int j = 0; j < th; j++)
-            if(guess[i][j] != 0 && guess[i][j] != 1) {
-                guess[i][j] = 0;
+            if(*(*(guess+i)+j) != 0 && *(*(guess+i)+j) != 1) {
+                *(*(guess+i)+j) = 0;
                 return 0;
             }
 
@@ -51,8 +51,8 @@ int check_binarity(int **guess, int th) {
 
 int check_row(int **guess, int **board, int th, int rand) {
     for(int j = 0; j < th; j++)
-        if(guess[rand][j] != board[rand][j]) {
-            guess[rand] = (int*)calloc(th, sizeof(int));
+        if(*(*(guess+rand)+j) != *(*(board+rand)+j)) {
+            *(guess+rand) = (int*)calloc(th, sizeof(int));
             return 0;
         }
 

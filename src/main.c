@@ -48,9 +48,9 @@ int main() {
     }
 
     for (int i = 0; i < th; i++) {
-        board[i] = (int*)calloc(th, sizeof(int));
-        guess[i] = (int*)calloc(th, sizeof(int));
-        if (board[i] == NULL || guess[i] == NULL) {
+        *(board+i) = (int*)calloc(th, sizeof(int));
+        *(guess+i) = (int*)calloc(th, sizeof(int));
+        if (*(board+i) == NULL || *(guess+i) == NULL) {
             printf("Eroare la alocarea memoriei pentru randul %d!\n", i);
             exit(0);
         }
@@ -61,7 +61,7 @@ int main() {
     time(&start_time);
 
     for(int i = 0; i < th; i++)
-        if(nums[i] == 0) correctRows++;
+        if(*(nums+i) == 0) correctRows++;
 
     do {
         clear_screen();
@@ -97,7 +97,7 @@ int main() {
             printf("\nIntroduceti valorile randului (cu spatiu intre ele): ");
 
             for(int j = 0; j < th; j++) {
-                scanf("%d", &guess[row][j]);
+                scanf("%d", *(guess+row)+j);
             }
 
             if(!check_binarity(guess, th)) {
