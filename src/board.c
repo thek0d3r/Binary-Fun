@@ -50,11 +50,13 @@ int check_binarity(int **guess, int th) {
 }
 
 int check_row(int **guess, int **board, int th, int rand) {
-    for(int j = 0; j < th; j++)
+    for(int j = 0; j < th; j++){
         if(*(*(guess+rand)+j) != *(*(board+rand)+j)) {
             *(guess+rand) = (int*)calloc(th, sizeof(int));
             return 0;
         }
+
+    }
 
     return 1;
 }

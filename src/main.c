@@ -74,6 +74,9 @@ int main() {
         {
         case 0: 
             printf("Jocul a fost abandonat!\n");
+            free(board);
+            free(nums);
+            free(guess);
             exit(0);
 
         case 1: {
