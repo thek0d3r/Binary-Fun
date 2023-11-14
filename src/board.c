@@ -25,12 +25,12 @@ void gen_board(int **board, int *nums, int th) {
         for(int k = i - 1; k >= 0; k--) {
             if(*(nums+k) == num) {
                 while(*(nums+k) == num) num = gen_num(th);
-                *(nums+k) = num;
+                *(nums+i) = num;
             }
         }
 
-        for(int j = th-1; j >= 0; j--) {
-            *(*(board+i)+j) = ((num >> (th - j - 1)) & 1);
+        for (int j = th - 1; j >= 0; j--) {
+            *(*(board + i) + j) = ((num >> (th - j - 1)) & 1);
         }
 
     }

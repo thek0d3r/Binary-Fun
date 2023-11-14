@@ -61,7 +61,7 @@ int main() {
     time(&start_time);
 
     do {
-        clear_screen();
+        // clear_screen();
         print_screen(guess, nums, th);
 
         printf("\nOptiuni: \n");
@@ -97,7 +97,7 @@ int main() {
             printf("\nIntroduceti valorile randului (cu spatiu intre ele): ");
 
             for(int j = 0; j < th; j++) {
-                scanf("%d", *(guess+row)+j);
+                scanf("%d", guess[row][j]);
             }
 
             if(!check_binarity(guess, th)) {
